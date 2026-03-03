@@ -22,7 +22,7 @@ function pageHeader(string $title, string $pageTitle = ''): void {
   --success: #08b447;    
   --danger: #ef4444;     
   --warning: #f59e0b;    
-  --text: #fdfdfd;       
+  --text: #000000;       
   --muted: #000000;      
   --radius: 10px;
 }
