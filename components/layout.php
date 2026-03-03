@@ -1,7 +1,4 @@
 <?php
-// components/layout.php
-// Shared HTML layout helpers
-
 function pageHeader(string $title, string $pageTitle = ''): void {
     if (!$pageTitle) $pageTitle = $title;
     echo <<<HTML
@@ -15,17 +12,17 @@ function pageHeader(string $title, string $pageTitle = ''): void {
 <style>
 :root {
   /* alternate palette provided by user */
-  --bg: #355872;          /* warm brown background */
-  --surface: #7AAACE;     /* muted olive surface */
-  --surface2: #7AAACE;    /* light cream surface variant */
-  --border: #000000;      /* soft tan border */
-  --accent: #000000;      /* primary accent */
-  --accent2: #355872;     /* secondary accent */
-  --success: #08b447;     /* existing green success color */
-  --danger: #ef4444;      /* existing red danger color */
-  --warning: #f59e0b;     /* existing yellow warning color */
-  --text: #fdfdfd;        /* light text color, remains */
-  --muted: #000000;       /* keep muted gray */
+  --bg: #355872;          
+  --surface: #7AAACE;    
+  --surface2: #7AAACE;    
+  --border: #000000;     
+  --accent: #000000;      
+  --accent2: #355872;     
+  --success: #08b447;    
+  --danger: #ef4444;     
+  --warning: #f59e0b;    
+  --text: #fdfdfd;       
+  --muted: #000000;      
   --radius: 10px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
