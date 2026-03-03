@@ -46,6 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         if (!in_array($data['role'], ['admin','user'])) $data['role'] = 'user';
 
         if (empty($errors)) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b05468 (changes)
             $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE (username=? OR email=?) AND id != ?");
             $check->execute([$data['username'], $data['email'], $id]);
             if ($check->fetchColumn() > 0) {
@@ -100,6 +104,10 @@ navBar();
 
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b05468 (changes)
     <div class="card">
       <div class="card-title">Account Information</div>
       <form method="post" action="">
@@ -140,7 +148,13 @@ navBar();
       </form>
     </div>
 
+<<<<<<< HEAD
     <div style="display:flex;flex-direction:column;gap:1rem">
+=======
+
+    <div style="display:flex;flex-direction:column;gap:1rem">
+
+>>>>>>> 9b05468 (changes)
       <div class="card">
         <div class="card-title">User Info</div>
         <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.875rem">
@@ -159,6 +173,10 @@ navBar();
         </div>
       </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b05468 (changes)
       <div class="card">
         <div class="card-title">Reset Password</div>
         <?php if ($passMsg): ?>
@@ -178,6 +196,10 @@ navBar();
         </form>
       </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b05468 (changes)
       <?php if ($user['id'] != currentUserId()): ?>
       <div class="card" style="border-color:#ef444444">
         <div class="card-title" style="color:var(--danger)">Danger Zone</div>

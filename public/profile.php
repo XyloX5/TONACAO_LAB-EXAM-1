@@ -1,5 +1,4 @@
 <?php
-// public/profile.php
 require_once '../components/auth.php';
 require_once '../components/pdo.php';
 require_once '../components/layout.php';
@@ -7,7 +6,6 @@ require_once '../components/layout.php';
 requireLogin();
 
 $pdo = getPDO();
-// SECURITY: Always load by session user_id — never trust URL parameter
 $id  = currentUserId();
 
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
@@ -32,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $upd = $pdo->prepare("UPDATE users SET firstname=?,lastname=? WHERE id=?");
         $upd->execute([$data['firstname'],$data['lastname'],$id]);
 
-        // Update session
         $_SESSION['firstname'] = $data['firstname'];
         $_SESSION['lastname']  = $data['lastname'];
 
@@ -61,7 +58,6 @@ navBar();
     <a href="change_password.php" class="btn btn-ghost">🔑 Change Password</a>
   </div>
 
-  <!-- Profile Header -->
   <div class="card" style="margin-bottom:1.5rem">
     <div class="profile-header">
       <div class="profile-avatar">

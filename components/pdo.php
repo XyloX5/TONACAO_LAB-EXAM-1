@@ -1,6 +1,4 @@
 <?php
-// components/pdo.php
-// Database configuration — update these values to match your environment
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'usercore');   // ← matches your professor's SQL database name
