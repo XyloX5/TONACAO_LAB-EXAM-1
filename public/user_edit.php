@@ -1,7 +1,6 @@
 
 
 <?php
-// public/admin_user_edit.php
 require_once '../components/auth.php';
 require_once '../components/pdo.php';
 require_once '../components/layout.php';
@@ -30,7 +29,6 @@ $errors   = [];
 $success  = false;
 $passMsg  = '';
 
-// Handle profile update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
     if ($_POST['action'] === 'update_profile') {
@@ -48,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         if (!in_array($data['role'], ['admin','user'])) $data['role'] = 'user';
 
         if (empty($errors)) {
-            // Check uniqueness excluding current user
             $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE (username=? OR email=?) AND id != ?");
             $check->execute([$data['username'], $data['email'], $id]);
             if ($check->fetchColumn() > 0) {
@@ -61,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 exit;
             }
         }
-        // Re-merge data for display
         $user = array_merge($user, $data);
     }
 
@@ -104,7 +100,6 @@ navBar();
 
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start">
 
-    <!-- Profile Form -->
     <div class="card">
       <div class="card-title">Account Information</div>
       <form method="post" action="">
@@ -145,9 +140,7 @@ navBar();
       </form>
     </div>
 
-    <!-- Right panel -->
     <div style="display:flex;flex-direction:column;gap:1rem">
-      <!-- User info -->
       <div class="card">
         <div class="card-title">User Info</div>
         <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.875rem">
@@ -166,7 +159,6 @@ navBar();
         </div>
       </div>
 
-      <!-- Reset Password -->
       <div class="card">
         <div class="card-title">Reset Password</div>
         <?php if ($passMsg): ?>
@@ -186,7 +178,6 @@ navBar();
         </form>
       </div>
 
-      <!-- Danger Zone -->
       <?php if ($user['id'] != currentUserId()): ?>
       <div class="card" style="border-color:#ef444444">
         <div class="card-title" style="color:var(--danger)">Danger Zone</div>
