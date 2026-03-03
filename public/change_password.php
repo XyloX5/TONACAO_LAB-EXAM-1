@@ -1,5 +1,4 @@
 <?php
-// public/change_password.php
 require_once '../components/auth.php';
 require_once '../components/pdo.php';
 require_once '../components/layout.php';
@@ -7,7 +6,6 @@ require_once '../components/layout.php';
 requireLogin();
 
 $pdo = getPDO();
-// SECURITY: always use session user ID
 $id  = currentUserId();
 
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
