@@ -1,5 +1,4 @@
 <?php
-// public/admin_user_create.php
 require_once '../components/auth.php';
 require_once '../components/pdo.php';
 require_once '../components/layout.php';
@@ -20,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password  = $_POST['password'] ?? '';
     $password2 = $_POST['password2'] ?? '';
 
-    // Validate
     if (empty($data['username']))   $errors[] = 'Username is required.';
     if (empty($data['email']))       $errors[] = 'Email is required.';
     elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) $errors[] = 'Invalid email address.';
@@ -31,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         $pdo = getPDO();
-        // Check unique
         $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username=? OR email=?");
         $check->execute([$data['username'], $data['email']]);
         if ($check->fetchColumn() > 0) {
